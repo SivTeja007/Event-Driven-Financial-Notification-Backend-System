@@ -2,10 +2,10 @@
   "name": "fintech-event-notification-engine",
   "version": "1.0.0",
   "description": "Enterprise-scale event-driven notification backend processing 25+ financial event types across multi-channel routing, TRAI DND compliance, DLQ, and real-time analytics.",
-  "main": "dist/src/server/index.js",
+  "main": "src/server/index.ts",
   "type": "module",
   "scripts": {
-    "start": "node dist/src/server/index.js",
+    "start": "tsx src/server/index.ts",
     "dev": "vite --force",
     "build": "tsc && vite build",
     "preview": "vite preview",
