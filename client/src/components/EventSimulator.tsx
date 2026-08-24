@@ -66,13 +66,13 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
       {/* Event Trigger Form */}
       <div className="glass-panel" style={{ padding: '28px' }}>
-        <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '20px', color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Send size={20} color="#FFFFFF" /> Financial Event Studio (25+ Event Types)
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginBottom: '20px', color: '#111439', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Send size={20} color="#111439" /> Financial Event Studio (25+ Event Types)
         </h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           <div>
-            <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#A1A1AA', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#64748B', marginBottom: '6px' }}>
               Select Financial Event Type:
             </label>
             <select
@@ -81,10 +81,10 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
               style={{
                 width: '100%',
                 padding: '12px 14px',
-                borderRadius: '8px',
-                background: '#1A1B1C',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#FFFFFF',
+                borderRadius: '10px',
+                background: '#F8F8F9',
+                border: '1px solid rgba(17, 20, 57, 0.15)',
+                color: '#111439',
                 fontSize: '0.9rem',
                 fontWeight: 600
               }}
@@ -92,7 +92,7 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
               {Object.keys(FINANCIAL_EVENTS).map(key => {
                 const def = FINANCIAL_EVENTS[key];
                 return (
-                  <option key={key} value={key} style={{ background: '#1A1B1C', color: '#FFF' }}>
+                  <option key={key} value={key} style={{ background: '#FFF', color: '#111439' }}>
                     [{def.category}] {def.name} ({def.defaultPriority})
                   </option>
                 );
@@ -102,16 +102,16 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
             <div>
-              <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Target User ID:</label>
+              <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Target User ID:</label>
               <input
                 type="text"
                 value={userId}
                 onChange={e => setUserId(e.target.value)}
-                style={{ width: '100%', padding: '10px', borderRadius: '8px', background: '#1A1B1C', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#FFFFFF', fontWeight: 600 }}
+                style={{ width: '100%', padding: '10px', borderRadius: '10px', background: '#F8F8F9', border: '1px solid rgba(17, 20, 57, 0.15)', color: '#111439', fontWeight: 600 }}
               />
             </div>
             <div>
-              <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Priority Level:</label>
+              <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Priority Level:</label>
               <div style={{ marginTop: '8px' }}>
                 <span className={`badge badge-${selectedDef.defaultPriority.toLowerCase()}`}>{selectedDef.defaultPriority}</span>
               </div>
@@ -119,7 +119,7 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#A1A1AA', marginBottom: '6px' }}>
+            <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: '#64748B', marginBottom: '6px' }}>
               Payload Variables (JSON):
             </label>
             <textarea
@@ -130,10 +130,10 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
               style={{
                 width: '100%',
                 padding: '14px',
-                borderRadius: '8px',
-                background: '#1A1B1C',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                color: '#FFFFFF',
+                borderRadius: '10px',
+                background: '#F8F8F9',
+                border: '1px solid rgba(17, 20, 57, 0.15)',
+                color: '#111439',
                 fontSize: '0.875rem',
                 lineHeight: 1.5
               }}
@@ -149,10 +149,10 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
       {/* Batch Simulation Panel & Specs */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         <div className="glass-panel" style={{ padding: '28px' }}>
-          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '16px', color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Play size={20} color="#FFFFFF" /> High-Volume Load Simulator
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '16px', color: '#111439', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Play size={20} color="#7C3AED" /> High-Volume Load Simulator
           </h3>
-          <p style={{ fontSize: '0.875rem', color: '#A1A1AA', marginBottom: '20px', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.875rem', color: '#64748B', marginBottom: '20px', lineHeight: 1.5 }}>
             Simulate realistic financial traffic bursts to evaluate throughput (TPS), latency percentiles, TRAI DND blocks, and circuit breaker retries.
           </p>
 
@@ -163,9 +163,9 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
               max={500}
               value={batchCount}
               onChange={e => setBatchCount(Number(e.target.value))}
-              style={{ width: '110px', padding: '10px 14px', borderRadius: '8px', background: '#1A1B1C', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#FFFFFF', fontWeight: 800 }}
+              style={{ width: '110px', padding: '10px 14px', borderRadius: '10px', background: '#F8F8F9', border: '1px solid rgba(17, 20, 57, 0.15)', color: '#111439', fontWeight: 800 }}
             />
-            <button className="btn btn-primary" onClick={handleBatch} disabled={loading} style={{ flex: 1, justifyContent: 'center' }}>
+            <button className="btn btn-gradient" onClick={handleBatch} disabled={loading} style={{ flex: 1, justifyContent: 'center' }}>
               <Play size={16} /> Fire {batchCount} Events Burst
             </button>
           </div>
@@ -173,19 +173,19 @@ export const EventSimulator: React.FC<Props> = ({ onTriggerEvent, onRunBatch }) 
 
         {/* Selected Event Details Card */}
         <div className="glass-panel" style={{ padding: '28px' }}>
-          <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '14px' }}>Event Catalog Specification</h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.875rem', color: '#A1A1AA' }}>
-            <div><strong>Name:</strong> <span style={{ color: '#FFFFFF' }}>{selectedDef.name}</span></div>
+          <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#111439', marginBottom: '14px' }}>Event Catalog Specification</h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.875rem', color: '#64748B' }}>
+            <div><strong>Name:</strong> <span style={{ color: '#111439' }}>{selectedDef.name}</span></div>
             <div><strong>Description:</strong> {selectedDef.description}</div>
-            <div><strong>Category:</strong> <span style={{ color: '#FFFFFF', fontWeight: 800 }}>{selectedDef.category}</span></div>
-            <div><strong>TRAI Classification:</strong> <span style={{ color: '#FBBF24', fontWeight: 800 }}>{selectedDef.classification}</span></div>
-            <div><strong>DLT Header ID:</strong> <code style={{ color: '#34D399', fontWeight: 800 }}>{selectedDef.dltHeaderId || 'N/A'}</code></div>
+            <div><strong>Category:</strong> <span style={{ color: '#7C3AED', fontWeight: 800 }}>{selectedDef.category}</span></div>
+            <div><strong>TRAI Classification:</strong> <span style={{ color: '#D97706', fontWeight: 800 }}>{selectedDef.classification}</span></div>
+            <div><strong>DLT Header ID:</strong> <code style={{ color: '#059669', fontWeight: 800 }}>{selectedDef.dltHeaderId || 'N/A'}</code></div>
             <div><strong>Supported Channels:</strong> {selectedDef.supportedChannels.join(', ')}</div>
           </div>
         </div>
 
         {statusMsg && (
-          <div className="glass-panel" style={{ padding: '16px 20px', background: '#FFFFFF', color: '#1A1B1C', fontSize: '0.9rem', fontWeight: 800 }}>
+          <div className="glass-panel" style={{ padding: '16px 20px', background: '#111439', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: 700 }}>
             {statusMsg}
           </div>
         )}

@@ -1,23 +1,28 @@
 :root {
-  --bg-main: #1A1B1C;        /* NexBank Matte Charcoal Black */
-  --bg-card: #222426;        /* Matte Dark Card Container */
-  --bg-card-hover: #2A2C2E;  /* Hover state */
+  --bg-main: #F8F8F9;          /* White Lilac */
+  --bg-card: #FFFFFF;          /* Pure White Card */
+  --bg-card-hover: #F1F5F9;    /* Hover State */
   
-  --color-white: #FFFFFF;    /* Pure Crisp White */
+  --color-dark-blue: #111439;  /* Dark Blue */
+  --color-dark-slate: #1E293B;
+  --color-white-lilac: #F8F8F9;
+  
   --color-aero-blue: #AEFFF1;
-  --color-muted-gray: #999999;
-  --color-dark-gray: #333333;
+  --color-gradient-purple: #7C3AED;
+  --color-gradient-cyan: #06B6D4;
+  --color-gradient-amber: #F59E0B;
   
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-active: #FFFFFF;
+  --border-color: rgba(17, 20, 57, 0.08);
+  --border-active: #111439;
   
-  --text-main: #FFFFFF;
-  --text-muted: #A1A1AA;
+  --text-main: #111439;        /* High-contrast Dark Blue */
+  --text-slate: #334155;
+  --text-muted: #64748B;
   
-  --accent-emerald: #10B981;
-  --accent-amber: #F59E0B;
-  --accent-rose: #EF4444;
-  --accent-purple: #C084FC;
+  --accent-emerald: #059669;
+  --accent-amber: #D97706;
+  --accent-rose: #E11D48;
+  --accent-purple: #7C3AED;
 }
 
 * {
@@ -27,7 +32,12 @@
 }
 
 body {
-  background: #1A1B1C; /* Exact #1a1b1c matte charcoal black background */
+  background: #F8F8F9;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(245, 158, 11, 0.06) 0px, transparent 50%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   min-height: 100vh;
@@ -39,20 +49,19 @@ code, pre, .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* NexBank Institutional Banking Card */
+/* Stripe Color Gradient & White Lilac Card */
 .glass-panel {
-  background: #222426;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 20, 57, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(17, 20, 57, 0.05);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel:hover {
-  border-color: #FFFFFF;
-  background: #2A2C2E;
+  border-color: rgba(17, 20, 57, 0.2);
+  box-shadow: 0 16px 40px rgba(17, 20, 57, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 /* Scrollbars */
@@ -61,48 +70,61 @@ code, pre, .font-mono {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1A1B1C;
+  background: #F8F8F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #CBD5E1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFFFFF;
+  background: #111439;
 }
 
-/* NexBank Buttons */
+/* Stripe Style Pill Buttons (#111439) */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 22px;
-  border-radius: 8px;
+  border-radius: 30px;
   font-weight: 700;
   font-size: 0.875rem;
   cursor: pointer;
   border: 1px solid transparent;
   transition: all 0.2s ease;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .btn-primary {
-  background: #FFFFFF; /* High contrast pure white button */
-  color: #1A1B1C;     /* Matte black text */
-  font-weight: 800;
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
-  border: 1px solid #FFFFFF;
+  background: #111439;       /* Dark Blue button (#111439) */
+  color: #FFFFFF;           /* Crisp White text */
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(17, 20, 57, 0.25);
+  border: 1px solid #111439;
 }
 .btn-primary:hover {
-  background: #E2E8F0;
+  background: #1E293B;
+  color: #AEFFF1;
+  box-shadow: 0 6px 22px rgba(17, 20, 57, 0.35);
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(255, 255, 255, 0.25);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+  border: none;
+}
+.btn-gradient:hover {
+  box-shadow: 0 6px 22px rgba(124, 58, 237, 0.5);
+  transform: translateY(-1px);
 }
 
 .btn-danger {
   background: #EF4444;
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
 }
 .btn-danger:hover {
   background: #DC2626;
@@ -110,13 +132,14 @@ code, pre, .font-mono {
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #FFFFFF;
+  color: #111439;
+  border: 1px solid rgba(17, 20, 57, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #FFFFFF;
+  background: #F1F5F9;
+  border-color: #111439;
 }
 
 /* Badges */
@@ -124,22 +147,22 @@ code, pre, .font-mono {
   display: inline-flex;
   align-items: center;
   padding: 4px 12px;
-  border-radius: 6px;
+  border-radius: 9999px;
   font-size: 0.725rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
-.badge-critical { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.5); }
-.badge-high { background: rgba(245, 158, 11, 0.2); color: #FDE047; border: 1px solid rgba(245, 158, 11, 0.5); }
-.badge-medium { background: rgba(255, 255, 255, 0.15); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.4); }
-.badge-low { background: rgba(16, 185, 129, 0.2); color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.4); }
+.badge-critical { background: #FFE4E6; color: #9F1239; border: 1px solid #FECDD3; }
+.badge-high { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.badge-medium { background: #E0F2FE; color: #0369A1; border: 1px solid #BAE6FD; }
+.badge-low { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
 
-.badge-delivered { background: #FFFFFF; color: #1A1B1C; border: 1px solid #FFFFFF; }
-.badge-blocked { background: rgba(239, 68, 68, 0.2); color: #F87171; border: 1px solid #EF4444; }
-.badge-deferred { background: rgba(245, 158, 11, 0.2); color: #FBBF24; border: 1px solid #F59E0B; }
-.badge-dlq { background: rgba(192, 132, 252, 0.2); color: #C084FC; border: 1px solid #C084FC; }
+.badge-delivered { background: #111439; color: #FFFFFF; border: 1px solid #111439; }
+.badge-blocked { background: #FFE4E6; color: #9F1239; border: 1px solid #FECDD3; }
+.badge-deferred { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.badge-dlq { background: #F3E8FF; color: #6B21A8; border: 1px solid #E9D5FF; }
 
 /* Grid Layouts */
 .dashboard-grid {
@@ -151,20 +174,20 @@ code, pre, .font-mono {
 .tabs-nav {
   display: flex;
   gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid rgba(17, 20, 57, 0.08);
   padding-bottom: 14px;
   margin-bottom: 24px;
   overflow-x: auto;
 }
 
 .tab-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 10px 22px;
+  border-radius: 30px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #A1A1AA;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748B;
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 20, 57, 0.12);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -174,17 +197,17 @@ code, pre, .font-mono {
 }
 
 .tab-btn:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
+  color: #111439;
+  border-color: #111439;
+  background: #F1F5F9;
 }
 
 .tab-btn.active {
-  color: #1A1B1C;
-  background: #FFFFFF;
-  border-color: #FFFFFF;
-  font-weight: 800;
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  background: #111439;       /* Dark Blue active pill */
+  border-color: #111439;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(17, 20, 57, 0.25);
 }
 
 /* Pulsing Live Dot */
@@ -198,6 +221,6 @@ code, pre, .font-mono {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: #7C3AED;
   animation: pulseGlow 1.5s infinite ease-in-out;
 }

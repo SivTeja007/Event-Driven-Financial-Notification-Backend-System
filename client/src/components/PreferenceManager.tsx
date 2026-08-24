@@ -39,11 +39,11 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
       {/* Header & Save Bar */}
       <div className="glass-panel" style={{ padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Sliders color="#FFFFFF" size={22} /> User Preferences & TRAI DND Compliance Settings
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111439', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Sliders color="#7C3AED" size={22} /> User Preferences & TRAI DND Compliance Settings
           </h3>
-          <p style={{ color: '#A1A1AA', fontSize: '0.9rem', marginTop: '4px' }}>
-            Managing profile for: <strong style={{ color: '#FFFFFF' }}>{prefs.name}</strong> ({prefs.userId})
+          <p style={{ color: '#64748B', fontSize: '0.9rem', marginTop: '4px' }}>
+            Managing profile for: <strong style={{ color: '#111439' }}>{prefs.name}</strong> ({prefs.userId})
           </p>
         </div>
         <button className="btn btn-primary" onClick={handleSave}>
@@ -52,7 +52,7 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
       </div>
 
       {savedMsg && (
-        <div className="glass-panel" style={{ padding: '14px 24px', background: '#FFFFFF', color: '#1A1B1C', fontSize: '0.9rem', fontWeight: 800 }}>
+        <div className="glass-panel" style={{ padding: '14px 24px', background: '#111439', color: '#FFFFFF', fontSize: '0.9rem', fontWeight: 700 }}>
           User preference settings updated successfully!
         </div>
       )}
@@ -60,7 +60,7 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
         {/* TRAI DND Registry Config */}
         <div className="glass-panel" style={{ padding: '28px' }}>
-          <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111439', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Shield color="#EF4444" size={20} /> TRAI DND Telecom Compliance Registry Status
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -76,9 +76,9 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
                   alignItems: 'flex-start',
                   gap: '14px',
                   padding: '14px',
-                  borderRadius: '10px',
-                  background: prefs.traiDndStatus === item.id ? 'rgba(255, 255, 255, 0.15)' : '#1A1B1C',
-                  border: `1px solid ${prefs.traiDndStatus === item.id ? '#FFFFFF' : 'rgba(255, 255, 255, 0.1)'}`,
+                  borderRadius: '12px',
+                  background: prefs.traiDndStatus === item.id ? 'rgba(124, 58, 237, 0.08)' : '#F8F8F9',
+                  border: `1px solid ${prefs.traiDndStatus === item.id ? '#7C3AED' : 'rgba(17, 20, 57, 0.1)'}`,
                   cursor: 'pointer'
                 }}
               >
@@ -90,8 +90,8 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
                   style={{ marginTop: '3px' }}
                 />
                 <div>
-                  <div style={{ fontWeight: 800, fontSize: '0.925rem', color: '#FFFFFF' }}>{item.label}</div>
-                  <div style={{ fontSize: '0.825rem', color: '#A1A1AA', marginTop: '3px' }}>{item.desc}</div>
+                  <div style={{ fontWeight: 800, fontSize: '0.925rem', color: '#111439' }}>{item.label}</div>
+                  <div style={{ fontSize: '0.825rem', color: '#64748B', marginTop: '3px' }}>{item.desc}</div>
                 </div>
               </label>
             ))}
@@ -100,12 +100,12 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
 
         {/* Quiet Hours Config */}
         <div className="glass-panel" style={{ padding: '28px' }}>
-          <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Clock color="#F59E0B" size={20} /> Timezone-Aware Quiet Hours Configuration
+          <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111439', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <Clock color="#D97706" size={20} /> Timezone-Aware Quiet Hours Configuration
           </h4>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <label style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.925rem', color: '#FFFFFF', cursor: 'pointer' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.925rem', color: '#111439', cursor: 'pointer' }}>
               <input
                 type="checkbox"
                 checked={prefs.quietHours.enabled}
@@ -116,26 +116,26 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
               <div>
-                <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Quiet Window Start:</label>
+                <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Quiet Window Start:</label>
                 <input
                   type="time"
                   value={prefs.quietHours.startTime}
                   onChange={e => setPrefs({ ...prefs, quietHours: { ...prefs.quietHours, startTime: e.target.value } })}
-                  style={{ width: '100%', padding: '10px', borderRadius: '8px', background: '#1A1B1C', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#FFFFFF', fontWeight: 700 }}
+                  style={{ width: '100%', padding: '10px', borderRadius: '8px', background: '#F8F8F9', border: '1px solid rgba(17, 20, 57, 0.15)', color: '#111439', fontWeight: 700 }}
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Quiet Window End:</label>
+                <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Quiet Window End:</label>
                 <input
                   type="time"
                   value={prefs.quietHours.endTime}
                   onChange={e => setPrefs({ ...prefs, quietHours: { ...prefs.quietHours, endTime: e.target.value } })}
-                  style={{ width: '100%', padding: '10px', borderRadius: '8px', background: '#1A1B1C', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#FFFFFF', fontWeight: 700 }}
+                  style={{ width: '100%', padding: '10px', borderRadius: '8px', background: '#F8F8F9', border: '1px solid rgba(17, 20, 57, 0.15)', color: '#111439', fontWeight: 700 }}
                 />
               </div>
             </div>
 
-            <label style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.875rem', color: '#FFFFFF', fontWeight: 700, cursor: 'pointer' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '0.875rem', color: '#7C3AED', fontWeight: 700, cursor: 'pointer' }}>
               <input
                 type="checkbox"
                 checked={prefs.quietHours.allowCriticalOverride}
@@ -149,20 +149,20 @@ export const PreferenceManager: React.FC<Props> = ({ preferences, onSavePreferen
 
       {/* Category Channel Matrix Grid */}
       <div className="glass-panel" style={{ padding: '28px' }}>
-        <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '18px' }}>Channel Preference Matrix per Category</h4>
+        <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111439', marginBottom: '18px' }}>Channel Preference Matrix per Category</h4>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.12)', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px', color: '#A1A1AA' }}>Financial Event Category</th>
+            <tr style={{ borderBottom: '2px solid rgba(17, 20, 57, 0.08)', textAlign: 'left' }}>
+              <th style={{ padding: '12px 16px', color: '#64748B' }}>Financial Event Category</th>
               {channels.map(ch => (
-                <th key={ch} style={{ padding: '12px 16px', textAlign: 'center', color: '#A1A1AA' }}>{ch}</th>
+                <th key={ch} style={{ padding: '12px 16px', textAlign: 'center', color: '#64748B' }}>{ch}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {categories.map(cat => (
-              <tr key={cat} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <td style={{ padding: '14px 16px', fontWeight: 800, color: '#FFFFFF' }}>{cat}</td>
+              <tr key={cat} style={{ borderBottom: '1px solid rgba(17, 20, 57, 0.05)' }}>
+                <td style={{ padding: '14px 16px', fontWeight: 800, color: '#111439' }}>{cat}</td>
                 {channels.map(ch => {
                   const isChecked = prefs.channelMatrix[cat]?.[ch] ?? false;
                   return (

@@ -153,15 +153,15 @@ export const App: React.FC = () => {
       {/* App Header */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ padding: '12px 16px', borderRadius: '10px', background: '#FFFFFF', boxShadow: '0 4px 20px rgba(255, 255, 255, 0.15)' }}>
-            <Activity size={26} color="#1A1B1C" />
+          <div style={{ padding: '12px 18px', borderRadius: '30px', background: '#111439', boxShadow: '0 6px 20px rgba(17, 20, 57, 0.25)' }}>
+            <Activity size={26} color="#FFFFFF" />
           </div>
           <div>
-            <h1 style={{ fontSize: '1.85rem', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em' }}>
-              Financial Event Engine <span style={{ fontSize: '0.85rem', color: '#1A1B1C', fontWeight: 800, padding: '4px 10px', borderRadius: '20px', background: '#FFFFFF', verticalAlign: 'middle' }}>ENTERPRISE v1.0</span>
+            <h1 style={{ fontSize: '1.85rem', fontWeight: 800, color: '#111439', letterSpacing: '-0.02em' }}>
+              Financial Event Engine <span style={{ fontSize: '0.85rem', color: '#FFFFFF', fontWeight: 700, padding: '4px 12px', borderRadius: '30px', background: 'linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%)', verticalAlign: 'middle', boxShadow: '0 4px 12px rgba(124, 58, 237, 0.25)' }}>ENTERPRISE v1.0</span>
             </h1>
-            <p style={{ color: '#A1A1AA', fontSize: '0.925rem', marginTop: '2px' }}>
-              Multi-Channel Financial Engine | 25+ Event Types | TRAI DND Compliance | #1a1b1c Matte Spec
+            <p style={{ color: '#64748B', fontSize: '0.925rem', marginTop: '2px' }}>
+              Multi-Channel Financial Engine | 25+ Event Types | TRAI DND Compliance | White Lilac & Dark Blue Spec
             </p>
           </div>
         </div>

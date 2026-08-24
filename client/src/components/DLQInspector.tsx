@@ -48,29 +48,29 @@ export const DLQInspector: React.FC<Props> = ({ dlqMessages, onReplayMessage, on
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* Provider Fault Injection & Circuit Breaker Simulator */}
       <div className="glass-panel" style={{ padding: '28px' }}>
-        <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#C084FC', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Zap color="#C084FC" size={22} /> Provider Chaos Simulator & Circuit Breaker Test Studio
+        <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#7C3AED', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Zap color="#7C3AED" size={22} /> Provider Chaos Simulator & Circuit Breaker Test Studio
         </h3>
-        <p style={{ color: '#A1A1AA', fontSize: '0.9rem', marginBottom: '20px', lineHeight: 1.5 }}>
+        <p style={{ color: '#64748B', fontSize: '0.9rem', marginBottom: '20px', lineHeight: 1.5 }}>
           Inject provider network outages to test Circuit Breakers, Exponential Backoff Retries, Fallback Routing (e.g. SMS -&gt; WhatsApp), and DLQ persistence.
         </p>
 
         <div style={{ display: 'flex', gap: '18px', alignItems: 'center', flexWrap: 'wrap' }}>
           <div>
-            <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Target Channel Provider:</label>
+            <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Target Channel Provider:</label>
             <select
               value={selectedChannel}
               onChange={e => setSelectedChannel(e.target.value)}
-              style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', background: '#1A1B1C', border: '1px solid rgba(255, 255, 255, 0.15)', color: '#FFFFFF', fontWeight: 800 }}
+              style={{ display: 'block', padding: '10px 14px', borderRadius: '8px', background: '#F8F8F9', border: '1px solid rgba(17, 20, 57, 0.15)', color: '#111439', fontWeight: 800 }}
             >
               {['SMS', 'EMAIL', 'PUSH', 'WHATSAPP', 'IN_APP'].map(ch => (
-                <option key={ch} value={ch} style={{ background: '#1A1B1C', color: '#FFF' }}>{ch} Provider</option>
+                <option key={ch} value={ch} style={{ background: '#FFF', color: '#111439' }}>{ch} Provider</option>
               ))}
             </select>
           </div>
 
           <div>
-            <label style={{ fontSize: '0.75rem', color: '#A1A1AA', fontWeight: 600 }}>Failure Rate ({Math.round(failureRate * 100)}%):</label>
+            <label style={{ fontSize: '0.75rem', color: '#64748B', fontWeight: 600 }}>Failure Rate ({Math.round(failureRate * 100)}%):</label>
             <input
               type="range"
               min={0}
@@ -92,7 +92,7 @@ export const DLQInspector: React.FC<Props> = ({ dlqMessages, onReplayMessage, on
         </div>
 
         {faultMsg && (
-          <div style={{ marginTop: '16px', fontSize: '0.875rem', color: '#FDE047', fontWeight: 800 }}>
+          <div style={{ marginTop: '16px', fontSize: '0.875rem', color: '#D97706', fontWeight: 800 }}>
             {faultMsg}
           </div>
         )}
@@ -101,15 +101,15 @@ export const DLQInspector: React.FC<Props> = ({ dlqMessages, onReplayMessage, on
       {/* DLQ Messages List */}
       <div className="glass-panel" style={{ padding: '28px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#F87171', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <AlertTriangle color="#F87171" size={22} /> Dead-Letter Queue (DLQ) Store ({dlqMessages.length})
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#EF4444', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <AlertTriangle color="#EF4444" size={22} /> Dead-Letter Queue (DLQ) Store ({dlqMessages.length})
           </h3>
-          <span style={{ fontSize: '0.85rem', color: '#A1A1AA', fontWeight: 600 }}>Messages requiring manual replay or intervention</span>
+          <span style={{ fontSize: '0.85rem', color: '#64748B', fontWeight: 600 }}>Messages requiring manual replay or intervention</span>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
           {dlqMessages.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '50px', color: '#A1A1AA', fontSize: '0.95rem' }}>
+            <div style={{ textAlign: 'center', padding: '50px', color: '#64748B', fontSize: '0.95rem' }}>
               🎉 Zero DLQ messages! System is running healthy with zero unhandled failures.
             </div>
           ) : (
@@ -121,20 +121,20 @@ export const DLQInspector: React.FC<Props> = ({ dlqMessages, onReplayMessage, on
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: '18px',
-                  borderRadius: '10px',
-                  background: 'rgba(239, 68, 68, 0.1)',
-                  border: '1px solid rgba(239, 68, 68, 0.3)'
+                  borderRadius: '12px',
+                  background: '#FFE4E6',
+                  border: '1px solid #FECDD3'
                 }}
               >
                 <div>
-                  <div style={{ fontWeight: 800, color: '#FCA5A5', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ fontWeight: 800, color: '#9F1239', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <span>[{msg.channel}] {msg.eventType}</span>
-                    <span className="font-mono" style={{ fontSize: '0.75rem', color: '#A1A1AA', background: '#1A1B1C', padding: '2px 6px', borderRadius: '4px' }}>ID: {msg.dispatchId}</span>
+                    <span className="font-mono" style={{ fontSize: '0.75rem', color: '#64748B', background: '#FFFFFF', padding: '2px 6px', borderRadius: '4px' }}>ID: {msg.dispatchId}</span>
                   </div>
-                  <div style={{ fontSize: '0.875rem', color: '#FFFFFF', marginTop: '6px' }}>
+                  <div style={{ fontSize: '0.875rem', color: '#111439', marginTop: '6px' }}>
                     {msg.content.body}
                   </div>
-                  <div style={{ fontSize: '0.775rem', color: '#F87171', marginTop: '6px', fontWeight: 700 }}>
+                  <div style={{ fontSize: '0.775rem', color: '#9F1239', marginTop: '6px', fontWeight: 700 }}>
                     Failure Reason: {msg.failureReason || 'Max retries exhausted'} | Retries Attempted: {msg.retryCount}/{msg.maxRetries}
                   </div>
                 </div>
