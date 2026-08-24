@@ -1,5 +1,7 @@
 # 🚀 Event-Driven Financial Notification Back-end System
 
+[![Live UI Dashboard](https://img.shields.io/badge/Live%20UI%20Dashboard-Vercel-black.svg?style=for-the-badge&logo=vercel)](https://event-driven-financial-notification.vercel.app)
+[![Live Backend API](https://img.shields.io/badge/Live%20Backend%20API-Render-purple.svg?style=for-the-badge&logo=render)](https://event-driven-financial-notification-backend-system.onrender.com)
 [![Tech Stack](https://img.shields.io/badge/Stack-Node.js%20|%20TypeScript%20|%20Express%20|%20React%20|%20Vite-blue.svg)](#tech-stack)
 [![Architecture](https://img.shields.io/badge/Architecture-Event--Driven%20%7C%20CQRS%20%7C%20Circuit%20Breakers%20%7C%20DLQ-emerald.svg)](#architecture--key-patterns)
 [![Compliance](https://img.shields.io/badge/Compliance-TRAI%20DND%20%7C%20DLT%20Header%20Matching-amber.svg)](#regulatory--compliance-trai-dnd)
@@ -8,6 +10,14 @@
 An enterprise-scale, production-grade **Event-Driven Financial Notification Engine** engineered for high-throughput fintech platforms, stock brokerages, and wealth management applications. 
 
 The system processes **25+ distinct financial event types** across **5 communication channels** (*SMS, Email, Push Notifications, WhatsApp Business API, and In-App Feeds*) while enforcing strict TRAI DND regulatory compliance, user preference matrices, quiet hours, frequency capping rate-limiters, dead-letter queue (DLQ) retry strategies, multi-lingual personalisation, and real-time analytics streaming.
+
+---
+
+## 🌐 Live Production Deployments
+
+- 🎨 **Live Web Control Center UI**: **[https://event-driven-financial-notification.vercel.app](https://event-driven-financial-notification.vercel.app)**
+- ⚡ **Live Backend REST API**: **[https://event-driven-financial-notification-backend-system.onrender.com](https://event-driven-financial-notification-backend-system.onrender.com)**
+- 📡 **Live Telemetry WebSocket Stream**: `wss://event-driven-financial-notification-backend-system.onrender.com/ws`
 
 ---
 

@@ -44,6 +44,11 @@ export const App: React.FC = () => {
   const [dlqMessages, setDlqMessages] = useState<ChannelPayload[]>([]);
   const [userPreferences, setUserPreferences] = useState<UserPreferences>(DEFAULT_USER_PREFERENCES);
 
+  const API_BASE = import.meta.env.VITE_API_URL || 
+    (window.location.hostname === 'localhost' ? '' : 'https://event-driven-financial-notification-backend-system.onrender.com');
+  const WS_BASE = import.meta.env.VITE_WS_URL || 
+    (window.location.hostname === 'localhost' ? 'ws://localhost:5000/ws' : 'wss://event-driven-financial-notification-backend-system.onrender.com/ws');
+
   // Fetch initial REST data
   useEffect(() => {
     fetchMetrics();
@@ -51,9 +56,7 @@ export const App: React.FC = () => {
     fetchPreferences();
 
     // Connect WebSocket
-    const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsHost = window.location.hostname === 'localhost' ? 'localhost:5000' : window.location.host;
-    const socket = new WebSocket(`${wsProtocol}//${wsHost}/ws`);
+    const socket = new WebSocket(WS_BASE);
 
     socket.onopen = () => setIsConnected(true);
     socket.onclose = () => setIsConnected(false);
@@ -77,7 +80,7 @@ export const App: React.FC = () => {
 
   const fetchMetrics = async () => {
     try {
-      const res = await fetch('/api/metrics');
+      const res = await fetch(`${API_BASE}/api/metrics`);
       const json = await res.json();
       if (json.success) {
         setSnapshot(json.snapshot);
@@ -88,7 +91,7 @@ export const App: React.FC = () => {
 
   const fetchDlq = async () => {
     try {
-      const res = await fetch('/api/dlq');
+      const res = await fetch(`${API_BASE}/api/dlq`);
       const json = await res.json();
       if (json.success) setDlqMessages(json.messages);
     } catch (e) {}
@@ -96,14 +99,14 @@ export const App: React.FC = () => {
 
   const fetchPreferences = async () => {
     try {
-      const res = await fetch('/api/preferences/USR_1001');
+      const res = await fetch(`${API_BASE}/api/preferences/USR_1001`);
       const json = await res.json();
       if (json.success) setUserPreferences(json.preferences);
     } catch (e) {}
   };
 
   const handleTriggerEvent = async (event: any) => {
-    await fetch('/api/events/trigger', {
+    await fetch(`${API_BASE}/api/events/trigger`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(event)
@@ -112,7 +115,7 @@ export const App: React.FC = () => {
   };
 
   const handleRunBatch = async (count: number) => {
-    await fetch('/api/events/batch', {
+    await fetch(`${API_BASE}/api/events/batch`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ count, userId: 'USR_1001' })
@@ -121,7 +124,7 @@ export const App: React.FC = () => {
   };
 
   const handleSavePreferences = async (updated: UserPreferences) => {
-    await fetch(`/api/preferences/${updated.userId}`, {
+    await fetch(`${API_BASE}/api/preferences/${updated.userId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updated)
@@ -130,13 +133,13 @@ export const App: React.FC = () => {
   };
 
   const handleReplayDlq = async (dispatchId: string) => {
-    await fetch(`/api/dlq/replay/${dispatchId}`, { method: 'POST' });
+    await fetch(`${API_BASE}/api/dlq/replay/${dispatchId}`, { method: 'POST' });
     fetchDlq();
     fetchMetrics();
   };
 
   const handleSimulateFault = async (channel: string, failureRate: number) => {
-    await fetch('/api/providers/simulate-failure', {
+    await fetch(`${API_BASE}/api/providers/simulate-failure`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ channel, failureRate })
@@ -144,7 +147,7 @@ export const App: React.FC = () => {
   };
 
   const handleResetMetrics = async () => {
-    await fetch('/api/metrics/reset', { method: 'POST' });
+    await fetch(`${API_BASE}/api/metrics/reset`, { method: 'POST' });
     fetchMetrics();
   };
 
