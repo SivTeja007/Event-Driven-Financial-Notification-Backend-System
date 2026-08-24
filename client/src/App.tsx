@@ -44,9 +44,10 @@ export const App: React.FC = () => {
   const [dlqMessages, setDlqMessages] = useState<ChannelPayload[]>([]);
   const [userPreferences, setUserPreferences] = useState<UserPreferences>(DEFAULT_USER_PREFERENCES);
 
-  const API_BASE = import.meta.env.VITE_API_URL || 
+  const env = (import.meta as any).env || {};
+  const API_BASE = env.VITE_API_URL || 
     (window.location.hostname === 'localhost' ? '' : 'https://event-driven-financial-notification-backend-system.onrender.com');
-  const WS_BASE = import.meta.env.VITE_WS_URL || 
+  const WS_BASE = env.VITE_WS_URL || 
     (window.location.hostname === 'localhost' ? 'ws://localhost:5000/ws' : 'wss://event-driven-financial-notification-backend-system.onrender.com/ws');
 
   // Fetch initial REST data
